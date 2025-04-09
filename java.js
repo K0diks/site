@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const clickButton = document.getElementById('button-of-click1');
 
             clickButton.addEventListener('click', () => {
-                count = count + 100;
+                count++;
                 counterDisplay.textContent = `${count} ${getClickText(count)}`;
             });
 
