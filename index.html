@@ -6,9 +6,22 @@
 	<script src="./java.js"></script>
 </head>
 <body>
-	<h1> privet </h1>
-	<p> Eta testovi sait </p>
-	<img src="zdun.png" width = "500" height="400">
+	<script> var counter_click_button1 = 0; </script>
+	<script> //counter_click_button1 = click(counter_click_button1);</script>
+	<div width = "45vh" style="display: block;">
+		<h1 id = "text-of-click1"> кликов сделано:0 </h1>
+		<button id = "button-of-click1"> click! </button>
+	</div>
+	<div width = "45vh" style="display: block;">
+		<h1> privet </h1>
+		<p> Eta testovi sait </p>
+		<img src="zdun.png" width = "500vh">
+		<p> Скачать игру за 0 доллар </p>
+		<button onclick="document.getElementById('downloadLink').click()">Скачать</button>
+		<a href="file.zip" download="filename" id="downloadLink" style="display: none;"></a>
+	</div>
 
-	<a href="https://www.wildberries.by/catalog/153717341/detail.aspx?targetUrl=EX"> <h1>скачать </h1></a>
+
+
+
 </body>
