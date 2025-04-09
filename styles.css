@@ -36,8 +36,26 @@ p
   	text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue, 0 0 40px blue, 0 0 50px blue, 0 0 60px blue, 0 0 70px blue;
 }
 
-a 
+button
 {
-	color: white;
+  border: none;
+  color: white;
+  background-color: blue;
 	font-family: 'Press Start 2P', cursive;
+  text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue, 0 0 40px blue, 0 0 50px blue, 0 0 60px blue, 0 0 70px blue;
+}
+
+p1
+{
+    color: white;
+    font-family: 'Press Start 2P', cursive; /* применяем шрифт */
+    font-size: 16px; /* размер шрифта */
+    text-align: center;
+  text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue, 0 0 40px blue, 0 0 50px blue, 0 0 60px blue, 0 0 70px blue;
+}
+
+div
+{
+  border: solid;
+  float: left;
 }
