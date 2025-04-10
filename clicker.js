@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         jdunDisplay.textContent = "Ждун: " + getJdunMood(count)
         // Отображаем информацию об автокликере
         document.getElementById('autoclicker-level').textContent = `Уровень автокликера: ${autoclickerLevel}`
-        document.getElementById('autoclicker-rate').textContent = `Скорость автокликера: ${autoclickerRate} кликов/сек`
+        document.getElementById('autoclicker-rate').textContent = `Скорость автокликера: ${autoclickerRate} ждунчиков/сек`
         document.getElementById('autoclicker-price').textContent = `Цена автокликера: ${autoclickerPrice} ждунчиков`
     }
 
