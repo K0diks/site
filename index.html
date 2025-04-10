@@ -5,24 +5,37 @@
 	<link rel="stylesheet" href="styles.css">
 	<link rel="icon" href="iconbig.png" type="image/x-icon">
 	<link rel="shortcut icon" href="icon.png" type="image/x-icon">
-	<script src="./java.js"></script>
+	<script src="./clicker.js"></script>
+	<script src="./music.js"></script>
+
 </head>
 <body>
-	<script> var counter_click_button1 = 0; </script>
-	<script> //counter_click_button1 = click(counter_click_button1);</script>
 	<div width = "45vh" style="display: block;">
 		<h1 id = "text-of-click1"> 0 кликов </h1>
 		<button id = "button-of-click1"> click! </button>
 		<button id = "button-of-update1">update!</button>
+		<button id = "button-of-auto-upgrade"> max update!</button>
 		<p id = "display-of-update1"> цена 50 кликов </p>
 	</div>
 	<div width = "45vh" style="display: block;">
-		<h1> privet </h1>
-		<p> Eta testovi sait </p>
+		<h1> кликер ждун </h1>
+		<p> ждун </p>
+		<p> ▼</p>
 		<img src="zdun.png" width = "500vh">
+		<p id="display-of-jdun1"> ждун шкала </p>
 		<p> Скачать игру за 0 доллар </p>
 		<button onclick="document.getElementById('downloadLink').click()">Скачать</button>
 		<a href="file.zip" download="filename" id="downloadLink" style="display: none;"></a>
+		<audio id="background-music" loop>
+			<source src="music.mp3" type="audio/mpeg">
+			Ваш браузер не поддерживает аудио.
+		</audio>
+		
+		<button id="music-toggle">Включить музыку</button>
+		<button id="music-change">Сменить музыку</button>
+	</div>
+	<div> 
+		<p class="floating-text" id="track-name"></p>
 	</div>
 
 
