@@ -2,11 +2,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let count = parseInt(localStorage.getItem('clickCount')) || 0
     let click1 = parseInt(localStorage.getItem('clickValue')) || 1
     let priceclick1 = parseInt(localStorage.getItem('clickPrice')) || 50
+    let autoclickerLevel = parseInt(localStorage.getItem('autoclickerLevel')) || 0
+    let autoclickerRate = parseInt(localStorage.getItem('autoclickerRate')) || 1
+    let autoclickerPrice = 1000 // Цена для покупки автокликера
 
     const counterDisplay = document.getElementById('text-of-click1')
     const clickButton = document.getElementById('button-of-click1')
     const updateButton = document.getElementById('button-of-update1')
     const autoUpdateButton = document.getElementById('button-of-auto-upgrade')
+    const autoclickerButton = document.getElementById('button-of-autoclicker') // Кнопка покупки автокликера
     const updateDisplay = document.getElementById('display-of-update1')
     const jdunDisplay = document.getElementById('display-of-jdun1')
 
@@ -41,6 +45,22 @@ document.addEventListener('DOMContentLoaded', () => {
         saveData()
     })
 
+    // Кнопка покупки автокликера
+    autoclickerButton.addEventListener('click', () => {
+        if (count >= autoclickerPrice) {
+            count -= autoclickerPrice
+            autoclickerLevel++
+            autoclickerRate *= 2 // Увеличиваем скорость автокликера
+            autoclickerPrice *= 2 // Увеличиваем цену автокликера для следующей покупки
+            alert(`Автокликер куплен! Уровень: ${autoclickerLevel}, скорость: ${autoclickerRate} кликов/секунду`)
+            updateDisplays()
+            saveData()
+        } else {
+            alert("Недостаточно ждунчиков для покупки автокликера")
+        }
+    })
+
+    // Функция обновления данных
     function tryUpgrade() {
         if (count >= priceclick1) {
             click1++
@@ -54,42 +74,58 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Обновление отображения интерфейса
     function updateDisplays() {
         counterDisplay.textContent = `${count} ${getClickText(count)}`
-        updateDisplay.textContent = "Цена " + priceclick1 + " кликов"
-        updateJdunMood(count)
+        updateDisplay.textContent = "Цена " + priceclick1 + " ждунчиков"
+        jdunDisplay.textContent = "Ждун: " + getJdunMood(count)
+        // Отображаем информацию об автокликере
+        document.getElementById('autoclicker-level').textContent = `Уровень автокликера: ${autoclickerLevel}`
+        document.getElementById('autoclicker-rate').textContent = `Скорость автокликера: ${autoclickerRate} кликов/сек`
+        document.getElementById('autoclicker-price').textContent = `Цена автокликера: ${autoclickerPrice} ждунчиков`
     }
 
+    // Функция для склонения "ждунчик"
     function getClickText(count) {
         if (count % 10 === 1 && count % 100 !== 11) {
-            return 'клик'
+            return 'ждунчик'
         } else if ((count % 10 >= 2 && count % 10 <= 4) && (count % 100 < 12 || count % 100 > 14)) {
-            return 'клика'
+            return 'ждунчика'
         } else {
-            return 'кликов'
+            return 'ждунчиков'
         }
     }
 
-    function updateJdunMood(count) {
+    // Функция для настроек настроения ждуна
+    function getJdunMood(count) {
         if (count >= 1000000) {
-            jdunDisplay.textContent = "Ждун самый веселый на планете!"   
-        }
-        else if (count >= 100000) {
-            jdunDisplay.textContent = "Ждун веселый!"
+            return "Ждун самый веселый на планете!"
+        } else if (count >= 100000) {
+            return "Ждун веселый!"
         } else if (count >= 10000) {
-            jdunDisplay.textContent = "Ждун рад!"
+            return "Ждун рад!"
         } else if (count >= 1000) {
-            jdunDisplay.textContent = "Ждун не много рад!"
+            return "Ждун немного рад!"
         } else {
-            jdunDisplay.textContent = "Ждун ждёт!"
+            return "Ждун ждёт!"
         }
     }
 
-
-
+    // Сохранение данных в localStorage
     function saveData() {
         localStorage.setItem('clickCount', count)
         localStorage.setItem('clickValue', click1)
         localStorage.setItem('clickPrice', priceclick1)
+        localStorage.setItem('autoclickerLevel', autoclickerLevel)
+        localStorage.setItem('autoclickerRate', autoclickerRate)
     }
+
+    // Автокликер
+    setInterval(() => {
+        if (autoclickerLevel > 0) {
+            count += autoclickerRate // увеличиваем клики по скорости автокликера
+            updateDisplays()
+            saveData()
+        }
+    }, 1000) // Автокликер будет кликать каждую секунду
 })
