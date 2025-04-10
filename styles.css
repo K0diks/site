@@ -45,17 +45,35 @@ button
   text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue, 0 0 40px blue, 0 0 50px blue, 0 0 60px blue, 0 0 70px blue;
 }
 
-p1
-{
-    color: white;
-    font-family: 'Press Start 2P', cursive; /* применяем шрифт */
-    font-size: 16px; /* размер шрифта */
-    text-align: center;
-  text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue, 0 0 40px blue, 0 0 50px blue, 0 0 60px blue, 0 0 70px blue;
-}
 
 div
 {
   border: solid;
   float: left;
 }
+
+button:hover {
+    background-color: darkblue;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.floating-text {
+  color: white;
+  font-family: 'Press Start 2P', cursive; /* применяем шрифт */
+  font-size: 16px; /* размер шрифта */
+  display: inline-block;
+  text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue, 0 0 40px blue, 0 0 50px blue, 0 0 60px blue, 0 0 70px blue;
+  animation: float 1s infinite alternate;
+}
+
+ @keyframes float {
+    0% {
+      transform: translateY(0); /* начальная позиция */
+    }
+    50% {
+    transform: translateY(-5px); /* чуть поднимем */
+    }
+    100% {
+    transform: translateY(0); /* возвращаем на место */
+    }
